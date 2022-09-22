@@ -28,6 +28,7 @@ jobs:
           npm install
           npm run build:docs
           mv docs/build docs/docs
+          cp -R stories/assets docs/docs/assets
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Build static storybook from main
