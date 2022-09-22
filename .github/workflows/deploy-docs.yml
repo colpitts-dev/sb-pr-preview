@@ -18,6 +18,7 @@ jobs:
           type: now
           from_branch: master
           target_branch: preview-env
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: checkout preview-env branch
         uses: actions/checkout@v2
         with:
