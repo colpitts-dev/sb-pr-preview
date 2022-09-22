@@ -1,3 +1,7 @@
+:root {
+  --color-highlight: #FF4FA7;
+}
+
 .storybook-button {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -9,11 +13,12 @@
 }
 .storybook-button--primary {
   color: white;
-  background-color: #1ea7fd;
+  background-color: var(--color-highlight);
 }
 .storybook-button--secondary {
-  color: #333;
+  color: var(--color-highlight);
   background-color: transparent;
+  border: 1px solid var(--color-highlight);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
 .storybook-button--small {
