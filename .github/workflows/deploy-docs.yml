@@ -24,6 +24,7 @@ jobs:
         with:
           ref: preview-env
       - run: |
+          git rm -r docs/docs
           npm install
           npm run build:docs
           mv docs/build docs/docs
