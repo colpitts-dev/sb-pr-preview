@@ -24,3 +24,7 @@ a {
     background: black;
   }
 }
+
+:root {
+  --color-highlight: #00A699;
+}
