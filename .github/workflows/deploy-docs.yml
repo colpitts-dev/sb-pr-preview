@@ -10,13 +10,13 @@ jobs:
   build-and-deploy-docs:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout master branch
-        uses: actions/checkout@master
-      - name: Merge master -> preview-env
+      - name: checkout main branch
+        uses: actions/checkout@main
+      - name: Merge main -> preview-env
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: master
+          from_branch: main
           target_branch: preview-env
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: checkout preview-env branch
@@ -29,5 +29,5 @@ jobs:
           mv docs/build docs/docs
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Build static storybook from master
+          commit_message: Build static storybook from main
           branch: preview-env
