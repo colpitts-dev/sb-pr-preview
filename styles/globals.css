@@ -1,3 +1,7 @@
+:root {
+  --color-highlight: #FF69B4;
+}
+
 html,
 body {
   padding: 0;
@@ -23,8 +27,4 @@ a {
     color: white;
     background: black;
   }
-}
-
-:root {
-  --color-highlight: #00A699;
 }
