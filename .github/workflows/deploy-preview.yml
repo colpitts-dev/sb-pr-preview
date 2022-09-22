@@ -24,7 +24,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: preview-env
-          folder: docs
+          folder: docs/docs
           target-folder: docs/pr-preview/${{ steps.generate_slug.outputs.slug }}
       - name: Publish env
         uses: marocchino/sticky-pull-request-comment@v2

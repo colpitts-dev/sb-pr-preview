@@ -13,9 +13,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build and deploy to storybook-static branch
+      - name: Build
+        run: npm install && npm run build:docs
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
-        env:
+        with:
           branch: preview-env
           folder: docs/docs
-          build_script: npm install && npm run build:docs
+          target-folder: docs/docs/
+      - name: Publish env
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Preview environment
+          message: |
+            ## Preview environment
+            https://colpitts-dev.github.io/sb-pr-preview/docs/
