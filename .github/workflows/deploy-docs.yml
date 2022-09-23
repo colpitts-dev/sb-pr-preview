@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install deps and build Storybook
-        run: npm install && npm run build:docs
+        run: npm install --legacy-peer-deps && npm run build:docs
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./storybook-static
