@@ -1,3 +1,5 @@
-# GH Pages - Root folder
+# Welcome to the frontend design system
 
-This folder is used for building static and preview builds for Storybook that are hosted using GH pages. This directory should be left empty.
+This serves as a simple landing page for GH Pages
+
+Visit the [docs](https://colpitts-dev.github.io/sb-pr-preview/docs)

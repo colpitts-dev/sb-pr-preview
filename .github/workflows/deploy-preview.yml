@@ -1,12 +1,17 @@
-# .github/workflows/deploy-preview.yml
-name: Deploy preview
+name: Storybook PR Preview
 
 on:
-  pull_request: null
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+concurrency: preview-${{ github.ref }}
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
+  pr-preview:
+    runs-on: ubuntu-latest
     continue-on-error: true
     steps:
       - name: Checkout code
@@ -18,18 +23,17 @@ jobs:
       - name: Generate slug
         id: generate_slug
         run: echo "##[set-output name=slug;]$(echo ${GITHUB_HEAD_REF#refs/heads/} | sed -r 's/[~\^]+//g' | sed -r 's/[^a-zA-Z0-9]+/-/g' | sed -r 's/^-+\|-+$//g' | tr A-Z a-z)"
-      - name: Build
+      - name: Install deps and build SB PR preview
         run: npm install && npm run build:docs
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+      - uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          branch: preview-env
-          folder: docs/build
+          branch: gh-pages
+          folder: storybook-static
           target-folder: docs/pr-preview/${{ steps.generate_slug.outputs.slug }}
       - name: Publish env
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          header: Preview environment
+          header: Storybook PR Preview
           message: |
-            ## Preview environment
+            ## Storybook PR Preview
             https://colpitts-dev.github.io/sb-pr-preview/pr-preview/${{ steps.generate_slug.outputs.slug }}/

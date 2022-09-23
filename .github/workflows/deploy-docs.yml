@@ -7,29 +7,15 @@ on:
 name: Publish stories if changed
 
 jobs:
-  build-and-deploy-docs:
+  deploy-storybook:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout main branch
-        uses: actions/checkout@main
-      - name: Merge main -> preview-env
-        uses: devmasx/merge-branch@v1.3.1
+      - uses: actions/checkout@v2
+      - name: Install deps and build Storybook
+        run: npm install && npm run build:docs
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          type: now
-          from_branch: main
-          target_branch: preview-env
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: checkout preview-env branch
-        uses: actions/checkout@v2
-        with:
-          ref: preview-env
-      - run: |
-          git rm -r docs/docs
-          npm install
-          npm run build:docs
-          mv docs/build docs/docs
-          git add .
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Build static storybook from main
-          branch: preview-env
+          folder: ./storybook-static
+          branch: gh-pages
+          target-folder: docs/docs
+          clean-exclude: pr-preview
