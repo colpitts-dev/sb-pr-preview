@@ -35,5 +35,11 @@
     "eslint-config-next": "12.3.1",
     "eslint-plugin-storybook": "^0.6.4",
     "typescript": "4.8.3"
+  },
+  "license": "MIT",
+  "homepage": "https://colpitts-dev.github.io/sb-pr-preview/docs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colpitts-dev/sb-pr-preview.git"
   }
 }
