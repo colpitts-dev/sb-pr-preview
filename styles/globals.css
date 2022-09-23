@@ -1,5 +1,5 @@
 :root {
-  --color-highlight: #1DA1F2;
+  --color-highlight: #FF69B4;
 }
 
 html,
@@ -17,14 +17,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }
